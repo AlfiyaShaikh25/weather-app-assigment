@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="styles.css">
+
+    <title>Weather Forecast App with Geolocation</title>
+</head>
+
+<body>
+
+    <!--  -->
+
+
+    <nav class="navbar navbar-expand-lg mt-0 shadow-lg theme-navbar">
+        <div class="container-fluid">
+            <div class="theme-switch-container d-flex align-items-center">
+                <label class="switch me-2">
+                    <input type="checkbox" id="theme-toggle">
+                    <span class="slider round"></span>
+                </label>
+            </div>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <form class="d-flex mt-2 mt-lg-0 w-100 justify-content-center" role="search">
+                    <i class="bi bi-search" style="width: 30px; height: 30px;"></i>
+                    <input class="form-control searchInput me-2 city" type="search" placeholder="Search by city"
+                        aria-label="Search by city" id="cityInput">
+
+                    <img src="assets/search.png " style="width: 20px; height: 20px;  align-self: center;"
+                        onclick="getWeather()" class="me-5 seacrchimg">
+                    <button type="button" class="btn btn-success btncurrentLocation btn-currentlocation"> <img
+                            src="assets/current location icon.png" class="me-1"
+                            style="width: 20px; height: 20px;">Current
+                        Location</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+
+    <!-- uppertop -->
+
+
+
+    </div>
+    <!-- cards -->
+    <div class="container  mt-5  justify-content-center">
+        <div class="row g-4"> <!-- Use g-4 for spacing between cards -->
+
+            <!-- First Card -->
+            <div class="col-md-12 col-lg-3 justify-content-center align-items-center align-self-center">
+                <div class="card shadow-lg rounded-4 " style="background-color: #e0e0e0; border-radius: 12px;"> 
+                    <div class="card-body text-center">
+                        <h6 class="card-subtitle mb-2 text-dark fw-semibold currentcity">Athens</h6>
+                        <h1 class="mb-3 text-primary fw-bold currenttime">9:30</h1>
+                        <p class="daydate mb-0 text-secondary currentcity">Friday, 12 March</p>
+                    </div>
+                 </div>
+             </div>
+            
+
+               <!-- second demo -->
+              <div class="col-md-12 col-lg-9">
+                <div class="card  shadow-lg " style="background-color: #e0e0e0; border-radius: 12px;">
+                    <div class="card-body">
+                        <!-- First Row: Temperature, Weather Icon & Description -->
+                        <div class="d-flex justify-content-between align-items-center">
+                            <!-- Temperature Section -->
+                            <!-- First Row: Temperature, Weather Icon & Description -->
+                            <div class="d-flex justify-content-between align-items-center">
+                                <!-- Temperature Section -->
+                                <div>
+                                    <h1 class="mb-2 text-dark fw-bold temp">24°C</h1>
+                                    <p class="mb-1 text-secondary feel-like o">Feels like: <strong>22°C</strong></p>
+                                    <p class="mb-1 text-dark sunrise o"><strong>Sunrise</strong> <br> 06:37 AM</p>
+                                    <p class="mb-1 text-dark sunset o"><strong>Sunset</strong> <br> 20:37 PM</p>
+                                </div>
+
+                                <!-- Weather Icon & Description -->
+                                <div class="text-center weather-description flex-grow-1">
+                                    
+                                </div>
+                            </div>
+
+
+                            <!-- Second Row: Weather Data Images -->
+                            <div class="row mt-3 text-center ">
+                                <div class="col-6">
+                                    <img class="second-card-img  " src="assets/humidity 1.png" alt="Humidity" width="40">
+                                    <p class="humidity text-dark mt-2 o ">41%</p>
+                                    <p class="">Humidity</p>
+                                </div>
+                                <div class="col-6">
+                                    <img class="second-card-img" src="assets/wind 1.png" alt="Wind Speed" width="40">
+                                    <p class="wind-speed text-dark o">2km/h</p>
+                                    <p class=" ">Wind Speed</p>
+                                </div>
+                                <div class="col-6">
+                                    <img class="second-card-img" src="assets/pressure-white 1.png" alt="Pressure" width="40">
+                                    <p class="pressure text-dark o">997hPa</p>
+                                    <p class="">Pressure</p>
+                                </div>
+                                <div class="col-6">
+                                    <img class="second-card-img" src="assets/uv-white 1.png" alt="UV Index" width="40">
+                                    <p class="uv-index text-dark o">8</p>
+                                    <p class="">UV</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+               
+
+              </div>
+
+            
+                <!-- Third Card (5-Day Forecast) -->
+                <div class="col-md-12 col-lg-6">
+                    <div class="card shadow-lg rounded-4 border-0" style="background-color: #e0e0e0; border-radius: 12px;">
+                        <div class="card-body text-center p-4">
+                            <h3 class="card-subtitle mb-3 text-dark fw-bold card-heading">5-Day Forecast</h3>
+                            
+                            <div class="container five-day-forecast">
+                                <div class="row g-4 align-items-center">
+                                    <div class="col-auto">
+                                        <img class="forecast-img" src="assets/few-clouds.png" alt="Clouds" style="width: 50px;">
+                                    </div>
+                                    <div class="col-auto fs-5 text-dark fw-semibold">20°C</div>
+                                    <div class="col-auto fs-6 text-secondary">Friday, March 12</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-12 col-lg-6 p-0  rounded-4  ">
+                    <div class="card card-body2 shadow-lg rounded-4 border-2 mb-0 p-0 " 
+                         style=" border-radius: 12px; min-height: 250px;">
+                        <h3 class="mt-3 fw-bold text-center">Hourly Forecast</h3>
+                        
+                        <div class="d-flex flex-row flex-nowrap overflow-auto mt-4 p-2 gap-3" 
+                             id="forecast-container">
+                            <!-- Hourly forecast dynamically added here -->
+                        </div>
+                    </div>
+                </div>
+                
+                
+              
+                
+
+
+
+        <script src="script.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+            integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+            crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
+            integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
+            crossorigin="anonymous"></script>
+
+
+</body>
+
+</html>
